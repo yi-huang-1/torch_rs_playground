@@ -1,0 +1,15 @@
+[package]
+name = "torchrdit_rs"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "torchrdit_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.24.0", features = ["extension-module"] }
+pyo3-tch = "0.20.0"
+torch-sys = "0.20.0"
