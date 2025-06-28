@@ -15,7 +15,9 @@ if __name__ == "__main__":
     print(f"input_tensor: {input_tensor}")
     output_tensor = wrap_torch_tensor_add_one(input_tensor)
     print(f"output_tensor: {output_tensor}")
-    sum_output_tensor = torch.sum(output_tensor)
+    # input_tensor = input_tensor + 1
+    output_tensor2 = wrap_torch_tensor_add_one(input_tensor)
+    sum_output_tensor = torch.sum(output_tensor + output_tensor2)
     print(sum_output_tensor)
     sum_output_tensor.backward()
     print(input_tensor.grad)
