@@ -45,6 +45,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+      - name: Install PyTorch
+        run: |
+          pip3 install torch
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
@@ -101,6 +104,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+      - name: Install PyTorch
+        run: |
+          pip3 install torch
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
@@ -159,6 +165,9 @@ jobs:
         with:
           python-version: 3.x
           architecture: ${{ matrix.platform.target }}
+      - name: Install PyTorch
+        run: |
+          pip3 install torch
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
@@ -195,6 +204,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+      - name: Install PyTorch
+        run: |
+          pip3 install torch
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
