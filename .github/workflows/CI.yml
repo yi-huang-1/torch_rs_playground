@@ -66,7 +66,7 @@ jobs:
           source .venv/bin/activate
           pip install torchrdit_rs --find-links dist --force-reinstall
           pip install pytest
-          cd rust && pytest
+          pytest
       - name: pytest
         if: ${{ !startsWith(matrix.platform.target, 'x86') && matrix.platform.target != 'ppc64' }}
         uses: uraimo/run-on-arch-action@v2
@@ -100,9 +100,11 @@ jobs:
           architecture: ${{ matrix.platform.target }}
       - name: Install PyTorch
         run: |
-          pip3 install torch
+          pip3 install torch==2.7.0 --index-url https://download.pytorch.org/whl/cpu
       - name: Build wheels
         uses: PyO3/maturin-action@v1
+        env:
+          LIBTORCH_USE_PYTORCH: 1
         with:
           target: ${{ matrix.platform.target }}
           args: --release --out dist --find-interpreter
@@ -121,7 +123,7 @@ jobs:
           source .venv/Scripts/activate
           pip install torchrdit_rs --find-links dist --force-reinstall
           pip install pytest
-          cd rust && pytest
+          pytest
 
   macos:
     runs-on: ${{ matrix.platform.runner }}
