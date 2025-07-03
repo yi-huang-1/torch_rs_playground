@@ -23,12 +23,3 @@ if platform.system() == 'Darwin':
             
     except ImportError:
         raise ImportError("PyTorch must be installed before importing torchrdit_rs")
-
-from .torchrdit_rs import *
-
-
-__doc__ = torchrdit_rs.__doc__
-if hasattr(torchrdit_rs, "__all__"):
-    __all__ = torchrdit_rs.__all__
-
-
