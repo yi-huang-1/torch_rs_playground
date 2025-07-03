@@ -212,8 +212,9 @@ jobs:
         uses: PyO3/maturin-action@v1
         with:
           target: ${{ matrix.platform.target }}
-          args: --release --out dist --find-interpreter --manifest-path rust/Cargo.toml
+          args: --release --out dist --find-interpreter --manifest-path rust/Cargo.toml 
           sccache: ${{ !startsWith(github.ref, 'refs/tags/') }}
+          working-directory: ./
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
@@ -226,7 +227,7 @@ jobs:
           source .venv/bin/activate
           pip install torchrdit_rs --find-links dist --force-reinstall
           pip install pytest
-          cd rust && pytest
+          pytest
 
   sdist:
     runs-on: ubuntu-latest
