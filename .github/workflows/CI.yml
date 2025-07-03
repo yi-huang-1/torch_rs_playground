@@ -47,7 +47,8 @@ jobs:
           python-version: 3.x
       - name: Install PyTorch
         run: |
-          pip3 install torch
+          python -m pip install --upgrade pip
+          pip3 install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
