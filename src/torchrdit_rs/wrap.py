@@ -1,4 +1,4 @@
-from torchrdit_rs import torch_tensor_add_one, torch_tensor_multiply
+from . import torch_tensor_add_one, torch_tensor_multiply
 import torch
 
 def wrap_torch_tensor_add_one(tensor: torch.Tensor) -> torch.Tensor:
