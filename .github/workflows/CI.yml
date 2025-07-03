@@ -49,6 +49,8 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip3 install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+          export LIBTORCH_USE_PYTORCH=1
+          export LIBTORCH_BYPASS_VERSION_CHECK=1
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
